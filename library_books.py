@@ -72,3 +72,35 @@ library_books = [
         "checkouts": 3
     }
 ]
+#lvl1
+def view_available_books():
+ available_books = []
+ for book in library_books:
+ if book["available"]:
+ available_books.append({
+ "id": book["id"],
+ "title": book["title"],
+ "author": book["author"]
+ })
+ return available_books
+ #vll2
+def search_books(author=None, genre=None):
+ results = []
+ for book in library_books:
+ if author and author.lower() in book["author"].lower():
+ results.append(book)
+ elif genre and genre.lower() in book["genre"].lower():
+ results.append(book)
+ return results
+
+# Example usage
+if __name__ == "__main__":
+ print("Available books:")
+ print(view_available_books())
+
+ print("\nSearch by author 'Orwell':")
+ print(search_books(author="Orwell"))
+
+ print("\nSearch by genre 'Fantasy':")
+ print(search_books(genre="Fantasy"))
+ 
